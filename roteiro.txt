@@ -1,0 +1,37 @@
+- aplicações
+    - oc new-project detran-rj-apps
+    - oc annotate ns detran-rj-apps istio-injection=enabled
+    - oc create -f order-deploy-yaml
+    - oc create -f product-deploy.yaml
+    - oc new-app --name=sonda registry.access.redhat.com/ubi8/ubi-minimal:8.5
+
+- aplicar configurações istio:
+    - oc create -f gateway
+    - oc create -f virtual-service
+- testar pods
+- sondar projetos
+    - oc rsh pods/sonda-1-deploy /bin/bash
+        - curl order:8080/order
+        - curl product:8080/spl50
+
+- Service mesh
+    - oc new-project detran-rj-infra-istio
+    instalar service-mesh
+        - elastic search
+        - kiali
+        - jaeger
+        - service mash
+
+    configurar service-mesh
+        - control-plane
+        - member-roll
+            - ajustar detran-rj-infra-istio >> Member Roll >> Spec >> Members [detran-rj-apps]
+
+    acessar routes
+        
+
+
+
+
+
+
