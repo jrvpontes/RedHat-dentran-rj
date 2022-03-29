@@ -1,0 +1,23 @@
+- Service mesh
+    - oc new-project detran-rj-infra-istio-v17
+    instalar service-mesh
+        # pod/kiali ausente
+        - elastic search - provided by Elastic
+        - jaeger - provided by CNCF
+        - kiali - provided by Kiali
+        - service mesh - provided by Red Hat
+
+
+        # falta testar/on-line:kiali ausente
+        - elastic search - provided by Red Hat
+        - jaeger - provided by CNCF
+        - kiali - provided by Kiali
+        - service mesh - provided by Red Hat
+
+        # falta testar : promissor
+        - elastic search - provided by Red Hat
+        - jaeger - provided by CNCF
+        - kiali - provided by Red Hat
+        - service mesh - provided by Red Hat
+
+

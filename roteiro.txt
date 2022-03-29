@@ -1,17 +1,9 @@
 - Service mesh
-    - oc new-project detran-rj-infra-istio-v14
+    - oc new-project detran-rj-infra-istio
     instalar service-mesh
-        # pod/kiali ausente
-        - elastic search - provided by Elastic
-        - jaeger - provided by CNCF
-        - kiali - provided by Kiali
-        - service mesh - provided by Red Hat
-
-
-        # falta testar
         - elastic search - provided by Red Hat
-        - jaeger - provided by Red Hat
-        - kiali - provided by Kiali
+        - jaeger - provided by CNCF
+        - kiali - provided by Red Hat
         - service mesh - provided by Red Hat
 
 
@@ -21,9 +13,9 @@
             - sem membros
 
 - aplicações
-    - oc new-project detran-rj-apps-v14
-    - oc annotate ns detran-rj-apps-v14 istio-injection=enabled
-    - ajustar detran-rj-infra-istio-v14 >> Member Roll >> Spec >> Members [detran-rj-apps-v14]
+    - oc new-project detran-rj-apps
+    - oc annotate ns detran-rj-apps istio-injection=enabled
+    - ajustar detran-rj-infra-istio >> Member Roll >> Spec >> Members [detran-rj-apps]
     - oc create -f order-deploy.yaml
     - oc create -f product-deploy.yaml
     - oc new-app --name=sonda registry.access.redhat.com/ubi8/ubi-minimal:8.5
@@ -42,7 +34,7 @@
         
 
 
-oc delete project detran-rj-apps-v14
-oc delete project detran-rj-infra-istio-v14
+oc delete project detran-rj-apps
+oc delete project detran-rj-infra-istio
 
 
