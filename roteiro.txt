@@ -1,10 +1,19 @@
 - Service mesh
-    - oc new-project detran-rj-infra-istio-v4
+    - oc new-project detran-rj-infra-istio-v14
     instalar service-mesh
-        - elastic search
-        - kiali - community
-        - jaeger
-        - service mash
+        # pod/kiali ausente
+        - elastic search - provided by Elastic
+        - jaeger - provided by CNCF
+        - kiali - provided by Kiali
+        - service mesh - provided by Red Hat
+
+
+        # falta testar
+        - elastic search - provided by Red Hat
+        - jaeger - provided by Red Hat
+        - kiali - provided by Kiali
+        - service mesh - provided by Red Hat
+
 
     configurar service-mesh
         - control-plane
@@ -12,16 +21,16 @@
             - sem membros
 
 - aplicações
-    - oc new-project detran-rj-apps-v4
-    - oc annotate ns detran-rj-apps-v4 istio-injection=enabled
-    - ajustar detran-rj-infra-istio-v4 >> Member Roll >> Spec >> Members [detran-rj-apps-v4]
+    - oc new-project detran-rj-apps-v14
+    - oc annotate ns detran-rj-apps-v14 istio-injection=enabled
+    - ajustar detran-rj-infra-istio-v14 >> Member Roll >> Spec >> Members [detran-rj-apps-v14]
     - oc create -f order-deploy.yaml
     - oc create -f product-deploy.yaml
     - oc new-app --name=sonda registry.access.redhat.com/ubi8/ubi-minimal:8.5
 
 - aplicar configurações istio:
-    - oc create -f 0_istio-gateway
-    - oc create -f 1_istio-virtual-service
+    - oc create -f 0_istio-gateway.yaml
+    - oc create -f 1_istio-virtual-service.yaml
 - testar pods
 - sondar projetos
     - oc rsh pods/sonda-1-deploy /bin/bash
@@ -33,7 +42,7 @@
         
 
 
-oc delete project detran-rj-apps-v4
-oc delete project detran-rj-infra-istio-v4
+oc delete project detran-rj-apps-v14
+oc delete project detran-rj-infra-istio-v14
 
 
